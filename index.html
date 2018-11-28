@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>I like stuff</title>
+
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.8/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/KMLLayer",
+      "esri/widgets/LayerList",
+      "dojo/domReady!"
+    ], function(
+      Map,
+      MapView,
+      KMLLayer,
+      LayerList
+    ) {
+
+      var layer1 = new KMLLayer({
+        url: "http://quickmap.dot.ca.gov/data/lcs.kml" // lane closures from California Dept of Transportation
+      });
+      var layer2 = new KMLLayer({
+        url: "http://quickmap.dot.ca.gov/data/cctv.kml" // CCTV
+      });
+	  var layer3 = new KMLLayer({
+        url: "http://quickmap.dot.ca.gov/data/cms.kml" // CMS
+      });
+	  var layer4 = new KMLLayer({
+        url: "http://quickmap.dot.ca.gov/data/chp.kml" // CHP
+      });
+	  var layer5 = new KMLLayer({
+        url: "https://www.arb.ca.gov/smp/met/kml/calfire.kml" // CalFire
+      });
+
+      var map = new Map({
+        //basemap: "streets-navigation-vector",
+		basemap: "topo",
+        layers: [layer1, layer2, layer3, layer4, layer5]
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-120, 38],
+        zoom: 6
+      });
+      var layerList = new LayerList({
+          view: view
+      });
+      view.ui.add(layerList, "top-right");
+
+
+    });
+  </script>
+
+</head>
+
+<body>
+<H1> A MAP </h1>
+  <div id="viewDiv"></div>
+</body>
+
+</html>
