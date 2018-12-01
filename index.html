@@ -32,7 +32,6 @@
       "esri/layers/KMLLayer",
       "esri/widgets/LayerList",
 	  "esri/widgets/Search",
-	  "esri/widgets/Locate",
       "dojo/domReady!"
     ], function(
       Map,
@@ -42,7 +41,6 @@
 	  BasemapGallery,
       KMLLayer,
       LayerList,
-	  Locate,
 	  Search
     ) {
 
@@ -114,20 +112,9 @@
         position: "top-left"
       });*/
 	  
-	  // Create an instance of the Track widget
-      // and add it to the view's UI
-      var locate = new Locate({
-        view: view
-      });
-      //view.ui.add(track, "top-left");
 
-      // The sample will start tracking your location
-      // once the view becomes ready
-      view.when(function() {
-        track.start();
-      });
 
-	  
+ 	  
 	  // Create an Expand instance and set the content
       // property to the DOM node of the basemap gallery widget
       // Use an Esri icon font to represent the content inside
@@ -147,18 +134,12 @@
         content: searchWidget
       });
 	 
-	 var trExpand = new Expand({
-        view: view,
-        content: locate
-      });
-	  
+
 	  
 	  
 	  
 	  // Add the expand instance to the ui
 	  view.ui.add(srExpand, "top-right");
-	  view.ui.add(trExpand, "top-right");
-	  
 	  view.ui.add(sgExpand, "top-right");
       view.ui.add(bgExpand, "top-right");
 	  
