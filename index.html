@@ -32,7 +32,7 @@
       "esri/layers/KMLLayer",
       "esri/widgets/LayerList",
 	  "esri/widgets/Search",
-	  "esri/widgets/Track",
+	  "esri/widgets/Locate",
       "dojo/domReady!"
     ], function(
       Map,
@@ -42,7 +42,7 @@
 	  BasemapGallery,
       KMLLayer,
       LayerList,
-	  Track,
+	  Locate,
 	  Search
     ) {
 
@@ -116,7 +116,7 @@
 	  
 	  // Create an instance of the Track widget
       // and add it to the view's UI
-      var track = new Track({
+      var locate = new Locate({
         view: view
       });
       //view.ui.add(track, "top-left");
@@ -149,14 +149,14 @@
 	 
 	 var trExpand = new Expand({
         view: view,
-        content: track
+        content: locate
       });
 	  
 	  
 	  
 	  
 	  // Add the expand instance to the ui
-	  view.ui.add(srExpand, "top-left");
+	  view.ui.add(srExpand, "top-right");
 	  view.ui.add(trExpand, "top-right");
 	  
 	  view.ui.add(sgExpand, "top-right");
